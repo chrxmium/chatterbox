@@ -40,7 +40,12 @@ def reply(message):
     if replies:
         return " ".join(replies) # multi reply
 
-    return "i guess bro." # echo fallback
+    return random.choice([
+        "i guess, bro.",
+        "okay? and what am i meant to do with that?",
+        "fascinating. absolutely life-changing.",
+        "sure, if you say so.",
+    ]) # fallback response
 
 if __name__ == "__main__":
     while True:
