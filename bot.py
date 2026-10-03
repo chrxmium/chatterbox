@@ -1,5 +1,7 @@
 import os
 import discord
+import asyncio
+import random
 
 from brain import reply
 
@@ -19,6 +21,7 @@ async def on_message(message):
         return
 
     async with message.channel.typing():
+        await asyncio.sleep(random.uniform(3, 7))
         response = reply(message.content)
 
     await message.reply(response)
