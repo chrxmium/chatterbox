@@ -1,4 +1,5 @@
 import random
+import re
 
 memory = {}
 
@@ -44,13 +45,17 @@ def reply(message):
 
     petname = None
 
-    if "my pet's name is " in text:
-        start = text.index("my pet's name is ") + len("my pet's name is ")
-        petname = message[start:].strip(" .,!?")
+    match = re.search(r"my (.+?)'s name is (.+)", message, re.IGNORECASE)
+    if match:
+        animal = match.group(1).strip()
+        petname = match.group(2).strip(" .,!?")
+        memory["petname"] = petname
+        memory["animal"] = animal
+        replies.append(f"oh, your {animal} is called {petname}. cute, i guess.")
 
     if petname:
         memory["petname"] = petname
-        replies.append(f"okay. what am i meant to do with that? {petname}.") # pet name memory
+        replies.append(f"okay. cool. {petname}.") # pet name memory
 
     if "what's my pet's name" in text or "what is my pet's name" in text:
         if "petname" in memory:
