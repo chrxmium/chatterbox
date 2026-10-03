@@ -21,17 +21,15 @@ def reply(message):
     name = None
 
     if "my name is " in text:
-        name = message.strip()[11:].strip(" .,!?")
+        start = text.index("my name is ") + len("my name is ")
+        name = message[start:].strip(" .,!?")
     elif "i'm " in text:
-        name = message.strip()[4:].strip(" .,!?")
+        start = text.index("i'm ") + len("i'm ")
+        name = message[start:].strip(" .,!?")
 
     if name:
         memory["name"] = name
-        return f"nice to meet you, {name}!" # name memory
-
-    if "what's my name" in text or "what is my name" in text:
-        if "name" in memory:
-            replies.append(f"your name is {memory['name']}!")
+        replies.append(f"nice to meet you, {name}!")
         else:
             replies.append("i don't know your name yet. what should I call you?")
 
