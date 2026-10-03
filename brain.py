@@ -42,6 +42,25 @@ def reply(message):
     if replies:
         return " ".join(replies) # multi reply
 
+    petname = None
+
+    if "my pet's name is " in text:
+        start = text.index("my pet's name is ") + len("my pet's name is ")
+        petname = message[start:].strip(" .,!?")
+
+    if petname:
+        memory["petname"] = petname
+        replies.append(f"okay. what am i meant to do with that? {petname}.") # pet name memory
+
+    if "what's my pet's name" in text or "what is my pet's name" in text:
+        if "petname" in memory:
+            replies.append(f"you forgot your pet's name? you're a horrible owner. it's {memory['petname']}.")
+        else:
+            replies.append("why would i know your pet's name? stupid question.") # pet name inquiry
+
+    if replies:
+        return " ".join(replies) # multi reply
+
     return random.choice([
         "i guess, bro.",
         "okay? and what am i meant to do with that?",
