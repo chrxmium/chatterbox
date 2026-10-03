@@ -53,11 +53,14 @@ def reply(message):
     if petname:
         replies.append(f"okay. cool. {petname}.") # pet name memory
 
-    match = re.search(r"what is my (.+?)'s name|what's my (.+?)'s name", text)
-    if match:
-        animal = (match.group(1) or match.group(2)).strip().lower()
+    pet_question = re.search(
+        r"what(?:'|’)s my (.+?)(?:'|’)s name|what is my (.+?)(?:'|’)s name",
+        text,
+    )
+    if pet_question:
+        animal = (pet_question.group(1) or pet_question.group(2)).strip().lower()
         if animal in pets:
-            replies.append(f"your {animal}s name is {pets[animal]}.")
+            replies.append(f"your {animal}'s name is {pets[animal]}.")
         else:
             replies.append("why would i know your pet's name? stupid question.") # pet name inquiry
 
