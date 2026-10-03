@@ -1,3 +1,5 @@
+import random
+
 memory = {}
 
 def reply(message):
