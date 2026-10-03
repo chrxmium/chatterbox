@@ -6,7 +6,7 @@ def reply(message):
     replies = []
 
     if any(word in text.split() for word in {"hi", "hello", "hey"}):
-        replies.append("heya!") # greeting
+        replies.append("oh, hi. took you long enough.") # greeting
 
     if any(phrase in text for phrase in {
         "who are you",
@@ -15,7 +15,7 @@ def reply(message):
         "tell me about yourself",
     }):
         replies.append(
-            "i’m xilv's chatterbox, a rule-based chatbot for hack club's YSWS crescent." # introduction
+            "ugh. i’m xilv's chatterbox, a rule-based chatbot for hack club's YSWS crescent. is that it?" # introduction
         )
 
     name = None
@@ -29,18 +29,18 @@ def reply(message):
 
     if name:
         memory["name"] = name
-        replies.append(f"nice to meet you, {name}!") # name memory
+        replies.append(f"eurgh. nice to meet you, {name}, i guess.") # name memory
 
     if "what's my name" in text or "what is my name" in text:
         if "name" in memory:
-            replies.append(f"your name is {memory['name']}!")
+            replies.append(f"your name is {memory['name']}.")
         else:
-            replies.append("i don't know your name yet. what should I call you?") # name inquiry
+            replies.append("why would i know your name? stupid question.") # name inquiry
 
     if replies:
         return " ".join(replies) # multi reply
 
-    return "what" # echo fallback
+    return "i guess bro." # echo fallback
 
 if __name__ == "__main__":
     while True:
