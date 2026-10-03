@@ -22,7 +22,7 @@ async def on_message(message):
 
     async with message.channel.typing():
         await asyncio.sleep(random.uniform(3, 7))
-        response = reply(message.content)
+        response = reply(message.content, user_id=message.author.id)
 
     await message.reply(response)
 

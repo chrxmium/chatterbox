@@ -1,12 +1,13 @@
 import random
 import re
 
-memory = {}
-pets = {}
+memories = {}
+pets_by_user = {}
 
-def reply(message):
+def reply(message, user_id="local"):
     text = message.lower().strip(" .,!?")
-
+    memory = memories.setdefault(user_id, {})
+    pets = pets_by_user.setdefault(user_id, {})
     replies = []
 
     if any(word in text.split() for word in {"hi", "hello", "hey"}):
