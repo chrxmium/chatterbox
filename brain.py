@@ -50,6 +50,13 @@ def reply(message):
         pets[animal] = petname
         replies.append(f"oh, your {animal} is called {petname}. cute, i guess.")
 
+    match = re.search(r"my (.+?) is called (.+)", message, re.IGNORECASE)
+    if match:
+        animal = match.group(1).strip().lower()
+        petname = match.group(2).strip(" .,!?")
+        pets[animal] = petname
+        replies.append(f"oh, your {animal} is called {petname}. cute, i guess.")
+
     if petname:
         replies.append(f"okay. cool. {petname}.") # pet name memory
 
