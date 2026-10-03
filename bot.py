@@ -5,6 +5,8 @@ import random
 
 from brain import reply
 
+CHANNEL_ID = 1555835250914099263
+
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -18,6 +20,9 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.author == client.user:
+        return
+
+    if message.channel.id != CHANNEL_ID:
         return
 
     async with message.channel.typing():
