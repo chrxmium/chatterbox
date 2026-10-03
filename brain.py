@@ -29,11 +29,11 @@ def reply(message):
 
     if name:
         memory["name"] = name
-        replies.append(f"eurgh. nice to meet you, {name}, i guess.") # name memory
+        replies.append(f"fine. nice to meet you, {name}, i guess.") # name memory
 
     if "what's my name" in text or "what is my name" in text:
         if "name" in memory:
-            replies.append(f"your name is {memory['name']}.")
+            replies.append(f"shouldn't you know your own nane? your name is {memory['name']}.")
         else:
             replies.append("why would i know your name? stupid question.") # name inquiry
 
