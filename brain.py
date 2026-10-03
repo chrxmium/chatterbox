@@ -40,9 +40,6 @@ def reply(message):
         else:
             replies.append("why would i know your name? stupid question.") # name inquiry
 
-    if replies:
-        return " ".join(replies) # multi reply
-
     petname = None
 
     match = re.search(r"my (.+?)'s name is (.+)", message, re.IGNORECASE)
@@ -57,9 +54,11 @@ def reply(message):
         memory["petname"] = petname
         replies.append(f"okay. cool. {petname}.") # pet name memory
 
-    if "what's my pet's name" in text or "what is my pet's name" in text:
-        if "petname" in memory:
-            replies.append(f"you forgot your pet's name? you're a horrible owner. it's {memory['petname']}.")
+    if "what's my " in text and " name" in text:
+        if "petname" in memory and "animal" in memory:
+            replies.append(
+                f"your {memory['animal']}s name is {memory['petname']}."
+            )
         else:
             replies.append("why would i know your pet's name? stupid question.") # pet name inquiry
 
