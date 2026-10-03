@@ -20,9 +20,9 @@ def reply(message):
 
     name = None
 
-    if text.startswith("my name is "):
+    if "my name is " in text:
         name = message.strip()[11:].strip(" .,!?")
-    elif text.startswith("i'm "):
+    elif "i'm " in text:
         name = message.strip()[4:].strip(" .,!?")
 
     if name:
@@ -35,5 +35,8 @@ def reply(message):
     return f"You said: {message}" # echo fallback
 
 if __name__ == "__main__":
-    message = input("message: ")
-    print("chatterbox:", reply(message))
+    while True:
+        message = input("message (or quit): ")
+        if message.lower().strip() == "quit":
+            break
+        print("chatterbox:", reply(message))
