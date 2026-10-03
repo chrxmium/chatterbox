@@ -4,6 +4,9 @@ import asyncio
 import random
 
 from brain import reply
+from dotenv import load_dotenv
+
+load_dotenv()
 
 CHANNEL_ID = 1555835250914099263
 
