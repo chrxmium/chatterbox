@@ -1,8 +1,10 @@
 def reply(message):
     text = message.lower().strip(" .,!?")
 
+    replies = []
+
     if text in {"hi", "hello", "hey"}:
-        return "heya!" # greeting
+        replies.append("heya!")
 
     if any(phrase in text for phrase in {
         "who are you",
@@ -10,7 +12,12 @@ def reply(message):
         "what do you do",
         "tell me about yourself",
     }):
-        return "i’m xilv's chatterbox, a rule-based chatbot for hack club's YSWS crescent."
+        replies.append(
+            "i’m xilv's chatterbox, a rule-based chatbot for hack club's YSWS crescent."
+        )
+
+    if replies:
+        return " ".join(replies)
 
     return f"You said: {message}" # echo fallback
 
