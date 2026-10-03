@@ -27,7 +27,13 @@ def reply(message):
 
     if name:
         memory["name"] = name
-        return f"Nice to meet you, {name}!" # name memory
+        return f"nice to meet you, {name}!" # name memory
+
+    if "what's my name" in text or "what is my name" in text:
+        if "name" in memory:
+            replies.append(f"your name is {memory['name']}!")
+        else:
+            replies.append("i don't know your name yet. what should I call you?")
 
     if replies:
         return " ".join(replies) # multi reply
