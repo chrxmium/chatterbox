@@ -33,7 +33,7 @@ def reply(message):
 
     if "what's my name" in text or "what is my name" in text:
         if "name" in memory:
-            replies.append(f"shouldn't you know your own nane? your name is {memory['name']}.")
+            replies.append(f"shouldn't you know your own name? your name is {memory['name']}.")
         else:
             replies.append("why would i know your name? stupid question.") # name inquiry
 
