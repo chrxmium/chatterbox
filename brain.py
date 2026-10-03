@@ -40,7 +40,7 @@ def reply(message):
     if replies:
         return " ".join(replies) # multi reply
 
-    return f"You said: {message}" # echo fallback
+    return "what" # echo fallback
 
 if __name__ == "__main__":
     while True:
