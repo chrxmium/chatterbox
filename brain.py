@@ -3,7 +3,7 @@ def reply(message):
 
     replies = []
 
-    if text in {"hi", "hello", "hey"}:
+    if any(word in text.split() for word in {"hi", "hello", "hey"}):
         replies.append("heya!")
 
     if any(phrase in text for phrase in {
