@@ -17,8 +17,14 @@ def reply(message):
             "i’m xilv's chatterbox, a rule-based chatbot for hack club's YSWS crescent." # introduction
         )
 
+    name = None
+
     if text.startswith("my name is "):
         name = message.strip()[11:].strip(" .,!?")
+    elif text.startswith("i'm "):
+        name = message.strip()[4:].strip(" .,!?")
+
+    if name:
         memory["name"] = name
         return f"Nice to meet you, {name}!" # name memory
 
