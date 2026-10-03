@@ -2,6 +2,7 @@ import random
 import re
 
 memory = {}
+pets = {}
 
 def reply(message):
     text = message.lower().strip(" .,!?")
@@ -44,21 +45,19 @@ def reply(message):
 
     match = re.search(r"my (.+?)'s name is (.+)", message, re.IGNORECASE)
     if match:
-        animal = match.group(1).strip()
+        animal = match.group(1).strip().lower()
         petname = match.group(2).strip(" .,!?")
-        memory["petname"] = petname
-        memory["animal"] = animal
+        pets[animal] = petname
         replies.append(f"oh, your {animal} is called {petname}. cute, i guess.")
 
     if petname:
-        memory["petname"] = petname
         replies.append(f"okay. cool. {petname}.") # pet name memory
 
-    if "what's my " in text and " name" in text:
-        if "petname" in memory and "animal" in memory:
-            replies.append(
-                f"your {memory['animal']}s name is {memory['petname']}."
-            )
+    match = re.search(r"what is my (.+?)'s name|what's my (.+?)'s name", text)
+    if match:
+        animal = (match.group(1) or match.group(2)).strip().lower()
+        if animal in pets:
+            replies.append(f"your {animal}s name is {pets[animal]}.")
         else:
             replies.append("why would i know your pet's name? stupid question.") # pet name inquiry
 
