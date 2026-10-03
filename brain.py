@@ -1,7 +1,8 @@
+memory = {}
+
 def reply(message):
     text = message.lower().strip(" .,!?")
 
-    memory = {}
     replies = []
 
     if any(word in text.split() for word in {"hi", "hello", "hey"}):
