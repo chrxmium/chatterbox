@@ -1,3 +1,5 @@
+hiya this is like my first code project ever that i've shipped so yay!
+
 chatterbox is a small, rule-based discord chatbot for hack club's ysws crescent. it does not use an llm.
 
 ## features
